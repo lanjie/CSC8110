@@ -45,7 +45,7 @@ catch(ServiceException $e){
 ?>
 
 <?php
-	if($_POST['submit']){
+	if(isset($_POST['submit']) && $_POST['submit']){
 		$entity = new Entity();
 		$entity->setPartitionKey("customer");
 		$entity->setRowKey($_POST[name]);

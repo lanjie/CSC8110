@@ -1,6 +1,8 @@
 <html>
 	<head>	
 		<title>this is the Orders page!</title>
+		<script language=javascript>
+		</script>
 	</head>
 	<body>
 		<form action="orders.php" method="post" name="ordersInfo" >
@@ -45,8 +47,7 @@ catch(ServiceException $e){
 ?>
 
 <?php
-
-	if($_POST['submit']){
+	if(isset($_POST['submit']) && $_POST['submit']){
 		$inputName = $_POST[name];
 		
 		$filter = "PartitionKey eq 'customer'";
@@ -82,10 +83,11 @@ catch(ServiceException $e){
 						$code = $e->getCode();
 						$error_message = $e->getMessage();
 					}
+					break;
 					
-			}else
-				echo "No customer existed!";
-			break;
+			}//else
+				//echo "No customer existed!";
+			
 		}
 	}
 ?>
@@ -95,7 +97,7 @@ catch(ServiceException $e){
 
 <br><br>
 <table align="centre" with="80">
-<tr><td>name</td><td>location</td><td>order id</td><td>orderTime</td><td>Price</td></tr>
+<tr><td>name</td><td>location</td><td>order id</td><td>Price</td></tr>
 
 <?php
 
@@ -120,14 +122,13 @@ foreach($entities as $entity){
  	$price = $entity->getProperty("price")->getValue();
 	$location = $entity->getProperty("location")->getValue();
 	$orderId = $entity->getProperty("order_id")->getValue();
-	$ordertime = $entity->getTimestamp();
+	//$ordertime = $entity->getTimestamp();
 
 ?>
 	<tr>
 		<td><?php echo $name ?></td>
-		
+		<td><?php echo $location ?></td>
 		<td><?php echo $orderId?></td>
-		<td><?php echo $ordertime?></td>
 		<td><?php echo $price?></td>
 	</tr>
 <?php    
