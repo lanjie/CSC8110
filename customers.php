@@ -28,7 +28,7 @@ use WindowsAzure\Table\Models\Entity;
 use WindowsAzure\Table\Models\EdmType;
 
 // Create table REST proxy.
-$connectionString="DefaultEndpointsProtocol=http;AccountName=csc8110one;AccountKey=ycDVTSdq6CbalvpurZd1ZZv6+qSd/9btCzOARCojwYh7qkJQnFMCFCUEniG7pEfRDrFzXWLLm25RbYYwlZ056w==";
+$connectionString="DefaultEndpointsProtocol=http;AccountName=csc8110one;AccountKey=mXKieL9Ap0id+KhcVQEn5m/Lzpjm9xcHLgTiT9bkHu+6SsaSRyRrm7c/6XQ43jXXjVEIaqnfxcaAvEiiNVzFhQ==";
 $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 
 try {
@@ -68,7 +68,7 @@ catch(ServiceException $e){
 ?>
 <br><br>
 <table align="centre" with="80">
-<tr><td>user name</td><td>location</td></tr>
+<tr><td>user name</td><td>location</td><td>email</td></tr>
 <?php
 $filter = "PartitionKey eq 'customer'";
 
@@ -89,8 +89,9 @@ $entities = $result->getEntities();
 foreach($entities as $entity){
  $name = $entity->getProperty("name")->getValue();
  $location = $entity->getProperty("Location")->getValue();
+ $email = $entity->getRowKey();
 ?>
-	<tr><td><?php echo $name?></td><td><?php echo $location?></td></tr>
+	<tr><td><?php echo $name?></td><td><?php echo $location?></td><td><?php echo $email?></t</tr>
 <?php    
 }
 ?>

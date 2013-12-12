@@ -457,7 +457,7 @@ class HTTP_Request2_CookieJar implements Serializable
 
         // load the list if needed
         if (empty(self::$psl)) {
-            $path = 'C:\wamp\www\ecommerce\vendor/pear-pear.php.net/HTTP_Request2/data' . DIRECTORY_SEPARATOR . 'HTTP_Request2';
+            $path = 'C:\wamp\www\CSC8110\vendor/pear-pear.php.net/HTTP_Request2/data' . DIRECTORY_SEPARATOR . 'HTTP_Request2';
             if (0 === strpos($path, '@' . 'data_dir@')) {
                 $path = realpath(
                     dirname(__FILE__) . DIRECTORY_SEPARATOR . '..'
